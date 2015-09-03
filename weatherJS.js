@@ -5,14 +5,29 @@ $(document).ready(init);
 function init() {
   console.log('init works.');
   $('button').click(clicked);
+  $('input').click(clearText);
+}
+
+function clearText() {
+  $("input").val('');
+  $("input").attr('placeholder', '');
+}
+
+function getFlickrBgImg() {
+  var promiseFlickr = $.getJSON("https://api.flickr.com/services/rest/?method=flickr.test.echo&name=value");
+  promiseFlickr.success(function(data) {
+    flickr.photos.getWithGeoData
+  });
 }
 
 var promiseDefaultLoc = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/q/autoip.json");
 
 promiseDefaultLoc.success(function(data) {
-  console.log('Default Loc is available and is: ',data.location.zip, data);
+  var defaultLoc = data.location.zip;
+  console.log('Default Loc is available and is: ', data);
   $("input.form-control#zipCode").val(data.location.zip);
   console.log('zip shud be replaced.');
+  //getFlickrImg(defaultLoc);
 });
 
 function clicked() {
@@ -45,3 +60,7 @@ function clicked() {
     });
   }
 }
+
+//1e590c1e7ab3b7b85deef0f979e8cfbb
+// Secret:
+// d079115bf5eb5b4c
