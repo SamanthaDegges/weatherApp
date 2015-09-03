@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Weather by Samantha Degges</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="weatherCSS.css">
+</head>
+<body class="center-block">
+  <div class="container-fluid fa center-block text-center">
+  <div id="content" class="row center-block">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h1 class="text-center" id="weather">How's the weather?</h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="zipCode">12345</label>
+          <div class="input-group">
+            <div class="input-group-addon">Enter a Zip</div>
+            <input type="text" class="form-control" id="zipCode" placeholder="12345">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary">Check</button>
+      </form>
+
+
+
+      <div><h4 class = "hidden">CURRENTLY </h4><h2 id="temperature"></h2></div>
+        <div id="high-container">
+          <h4 class = "hidden">TODAYS HIGH</h4>
+          <h3 id="high"></h3>
+            <img src="http://icons.wxug.com/i/wxmap/logoWide.png" alt="Responsive image" class="img-responsive center-block"> </img>
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+  <script src= "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!--<script scr="ajaxpractice.js"></script>-->
+  <script src="weatherJS.js"></script>
+
+</body>
+</html>
