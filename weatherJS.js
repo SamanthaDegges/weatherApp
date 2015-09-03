@@ -6,16 +6,26 @@ function init() {
   console.log('init works.');
   $('button').click(clicked);
 }
+//var navCapability = navigator.geolocation;
+var promiseDefaultLoc = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/q/autoip.json");
+promiseDefaultLoc.success(function(data) {
+    console.log('Default Loc is available and is: ',data.location.zip, data);
+  // navigator.geolocation.getCurrentPosition(function(position) {
+  //   console.log('position is: '+position);
+  //   console.log('testA');
+      //var cords = position.coords.latitude, position.coords.longitude;
+      $("input.form-control#zipCode").val(data.location.zip);
+      console.log('zip shud be replaced.');
+});
 
 function clicked() {
   console.log("Button clicked");
 
-  var zip = $("input.form-control#zipCode").val();
-  console.log('length is: '+zip.length);
-  if (zip.length !== 5) {
+  var $zip = $("input.form-control#zipCode").val();
+  if ($zip.length !== 5 || /\D/g.test($zip)) {
    $("#weather").text("Incorrect Zip.");
  } else {
-    var promise = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/conditions/forecast/q/UnitedStates"+zip+".json");
+    var promise = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/conditions/forecast/q/UnitedStates"+$zip+".json");
 
     promise.success(function(data) {
       $("h4").removeClass("hidden");
