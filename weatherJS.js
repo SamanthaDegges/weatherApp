@@ -21,14 +21,14 @@ function clearText() {
 // }
 
 function getWebCamFeed(inputOrDefaultZip) {
-  var promise = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/webcams/q/"+inputOrDefaultZip+".json");
+  var promise = $.getJSON("https://api.wunderground.com/api/0a5af13171ab6bbf/webcams/q/"+inputOrDefaultZip+".json");
   promise.success(function(data) {
       console.log('webcam is: ',data);
       $("iframe").attr("src", data.webcams[0].CURRENTIMAGEURL);
   });
 }
 
-var promiseDefaultLoc = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/q/autoip.json");
+var promiseDefaultLoc = $.getJSON("https://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/q/autoip.json");
 
 promiseDefaultLoc.success(function(data) {
   var defaultLoc = data.location.zip;
@@ -46,7 +46,7 @@ function clicked() {
   if ($zip.length !== 5 || /\D/g.test($zip)) {
    $("#weather").text("Incorrect Zip.");
  } else {
-    var promise = $.getJSON("http://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/conditions/forecast/q/UnitedStates"+$zip+".json");
+    var promise = $.getJSON("https://api.wunderground.com/api/0a5af13171ab6bbf/geolookup/conditions/forecast/q/UnitedStates"+$zip+".json");
 
     promise.success(function(data) {
       if (data.current_observation.feelslike_string) {
